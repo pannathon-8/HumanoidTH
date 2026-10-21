@@ -80,7 +80,7 @@ Follow these simple steps to spin up the Thailand Humanoid Atlas on your local m
 ### 📥 1. Clone the repository and install dependencies
 ```bash
 # Clone the repository
-git clone https://github.com/taechasith/HumanoidTH.git
+git clone https://github.com/pannathon-8/HumanoidTH.git
 cd HumanoidTH
 
 # Install dependencies using pnpm
