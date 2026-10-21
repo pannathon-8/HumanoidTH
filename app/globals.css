@@ -2,6 +2,33 @@
 @import url("bpmn-js/dist/assets/bpmn-js.css");
 @import url("bpmn-js/dist/assets/bpmn-font/css/bpmn.css");
 
+.careloop {
+  margin: 24px 0;
+  border-top: 4px solid var(--accent);
+}
+.careloop h2 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); }
+.careloop-eyebrow { color: var(--accent-strong); font-weight: 700; letter-spacing: .06em; margin: 0 0 6px; }
+.careloop label { display: block; font-weight: 600; margin: 20px 0 8px; }
+.careloop textarea { display: block; width: 100%; resize: vertical; font-size: 16px; line-height: 1.6; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text-primary); }
+.careloop textarea:focus-visible, .careloop button:focus-visible, .careloop a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.careloop-help { font-size: 13px; margin: 8px 0 14px; }
+.careloop-error { color: var(--danger); }
+.careloop-actions, .careloop-examples { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.careloop button { min-height: 44px; }
+.careloop button:disabled { opacity: .6; cursor: not-allowed; }
+.careloop-examples { margin-top: 16px; }
+.careloop-examples button { padding: 8px 12px; max-width: 100%; white-space: normal; text-align: left; border: 1px solid var(--border); background: var(--surface-muted); color: var(--accent-strong); border-radius: 10px; }
+.careloop-status { font-weight: 700; margin-top: 24px; }
+.careloop-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; margin-top: 16px; }
+.careloop-result { min-width: 0; overflow-wrap: anywhere; }
+.careloop-result h3 { font-size: 20px; margin-top: 0; }
+.careloop-result h4 { font-size: 15px; margin-bottom: 8px; }
+.careloop-evidence { padding-left: 20px; }
+.careloop-evidence li { margin-bottom: 14px; }
+.careloop-evidence p { margin: 6px 0; }
+.careloop-unknown { padding: 12px; background: var(--surface-muted); border-radius: 8px; font-size: 13px; }
+[id^="robot-"] { scroll-margin-top: 90px; }
+
 :root {
   --background: #faf6f0; /* Warm organic cream */
   --surface: #ffffff;

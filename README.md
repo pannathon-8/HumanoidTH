@@ -55,6 +55,26 @@ I built this platform using a modern, scalable, and developer-friendly stack:
 
 ## 🚀 Setup & Installation
 
+### CareLoop AI problem search
+
+Open `/robots` and describe a need, for example `อยากเรียนเขียนโค้ดด้วยหุ่นยนต์`
+or `ต้องการสื่อสารทางไกล`. The added form searches the existing registry with
+supported Thai intent groups and English whole-word terms. It displays the
+matching fields, explicitly linked source excerpts where available, and gaps in
+the evidence. The original registry remains below the results.
+
+Search runs locally in the page, without an external AI call, age field, saved
+query, or URL query parameter. Results may match only part of a request and do
+not establish individual suitability or health outcomes. Sources must have an
+exact official URL or canonical-name association; missing evidence is shown.
+
+Run the regression suite with `node --import tsx --test test/*.test.ts`.
+
+See [CareLoop usage and limitations](docs/careloop/README.md) and the
+[baseline audit](docs/careloop/BASELINE_AUDIT.md) for implementation and verification details.
+
+### Initial setup
+
 Follow these simple steps to spin up the Thailand Humanoid Atlas on your local machine:
 
 ### 📥 1. Clone the repository and install dependencies
@@ -291,7 +311,7 @@ The platform provides a suite of developer utilities for testing, data integrity
 | `pnpm seo:audit` | Audit metadata and tags | Scans Next.js dynamic routing structures to verify Title, Meta Descriptions, Canonicals, OpenGraph schemas, and headers. |
 | `pnpm seo:optimize` | Auto-apply SEO fixes | Programmatically rewrites page component metadata blocks with audit-approved SEO structures. |
 | `pnpm test` | Run test suite | Executes unit and integration test specs defined in the `test/` directory. |
-| `pnpm db:generate` | Generate Prisma Client | Re-compiles types and schemas into `generated/prisma` client files. |
+| `pnpm db:generate` | Generate Prisma Client | Re-compiles types and schemas into `node_modules/.prisma/client`. |
 | `pnpm db:push` | Sync database schemas | Migrates model changes directly into the PostgreSQL database. |
 | `pnpm db:seed` | Seed database manually | Performs a one-time import of the seed record file into the database. |
 

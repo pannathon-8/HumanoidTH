@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { getTranslation } from "@/lib/translations";
+import CareLoopSearch from "./CareLoopSearch";
+import type { SearchSource } from "@/lib/problem-search";
 
 export const dynamic = "force-dynamic";
 
@@ -143,6 +145,8 @@ export default async function RobotsPage() {
   }> = [];
   let sources: SourceLike[] = [];
   let dbOffline = false;
+  let evidenceUnavailable = false;
+  let searchSources: SearchSource[] = [];
 
   try {
     [robots, sources] = await Promise.all([
@@ -160,6 +164,29 @@ export default async function RobotsPage() {
     sources = [];
   }
 
+  if (robots.length) {
+    try {
+      const related = await prisma.sourceRecord.findMany({
+        where: { OR: [
+          { url: { in: robots.flatMap((robot) => robot.officialUrl ? [robot.officialUrl] : []) } },
+          ...robots.map((robot) => ({ rawMeta: { path: ["canonicalName"], equals: robot.canonicalName } }))
+        ] },
+        select: { title: true, url: true, excerpt: true, platform: true, rawMeta: true, publishedAt: true },
+        orderBy: [{ publishedAt: "desc" }, { url: "asc" }],
+        take: 200
+      });
+      searchSources = related.map((source) => ({
+        ...source,
+        title: source.title.slice(0, 240),
+        excerpt: source.excerpt.slice(0, 500),
+        rawMeta: { canonicalName: getStringField(source.rawMeta, ["canonicalName"]) },
+        publishedAt: source.publishedAt?.toISOString() ?? null
+      }));
+    } catch {
+      evidenceUnavailable = true;
+    }
+  }
+
   return (
     <>
       <h1>{t.robotsTitle}</h1>
@@ -169,11 +196,17 @@ export default async function RobotsPage() {
           Live database records are unavailable. No substitute robot registry records are being shown.
         </div>
       )}
+      <CareLoopSearch
+        robots={robots.map(({ id, canonicalName, description, robotType, primaryUseCase, officialUrl }) => ({ id, canonicalName, description, robotType, primaryUseCase, officialUrl, sourceMeta: null }))}
+        sources={searchSources}
+        available={!dbOffline}
+        evidenceUnavailable={evidenceUnavailable}
+      />
       <div className="cards">
         {robots.map((robot) => {
           const bannerUrl = getRobotSourceImage(robot, sources);
           return (
-            <article className="card" key={robot.id}>
+            <article className="card" key={robot.id} id={`robot-${robot.id}`}>
               <div className="card-banner">
                 {bannerUrl ? (
                   <img src={bannerUrl} alt={robot.canonicalName} loading="lazy" />

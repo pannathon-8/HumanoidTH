@@ -1,4 +1,4 @@
-import type { SourceType } from "../../generated/prisma";
+import type { SourceType } from "@prisma/client";
 import type { IngestResult, NormalizedSource } from "@/lib/ingest/types";
 import { saveSources } from "@/lib/ingest/save";
 

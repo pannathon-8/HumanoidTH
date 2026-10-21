@@ -1,4 +1,4 @@
-import type { SourceType } from "../../generated/prisma";
+import type { SourceType } from "@prisma/client";
 
 export type NormalizedSource = {
   sourceType: SourceType;

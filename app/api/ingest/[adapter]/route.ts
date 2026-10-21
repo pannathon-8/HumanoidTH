@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { SourceType } from "../../../../generated/prisma";
+import type { SourceType } from "@prisma/client";
 import { runAdapter } from "@/lib/ingest/adapters";
 
 type Params = Promise<{ adapter: string }>;

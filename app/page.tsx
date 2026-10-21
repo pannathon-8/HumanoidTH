@@ -123,9 +123,9 @@ export default async function OverviewPage() {
   }
 
   const cliCommands = [
-    "python -m humanoid_atlas db init",
-    "python -m humanoid_atlas ingest seeds --file data/seeds/robot_models.seed.yml",
-    "python -m humanoid_atlas ingest seeds --file data/seeds/inventory.seed.yml"
+    "pnpm db:generate",
+    "pnpm db:push",
+    "pnpm db:seed"
   ];
 
   const formatMetric = (value: number | null) => value?.toLocaleString() ?? "Unavailable";
@@ -917,18 +917,18 @@ export default async function OverviewPage() {
         <div className="command-grid">
           <div className="command-card">
             <div className="step">1</div>
-            <strong>Initialize DB tables</strong>
-            <code>python -m humanoid_atlas db init</code>
+            <strong>Generate Prisma client</strong>
+            <code>pnpm db:generate</code>
           </div>
           <div className="command-card">
             <div className="step">2</div>
-            <strong>Seed robot models</strong>
-            <code>python -m humanoid_atlas ingest seeds --file data/seeds/robot_models.seed.yml</code>
+            <strong>Create database tables</strong>
+            <code>pnpm db:push</code>
           </div>
           <div className="command-card">
             <div className="step">3</div>
-            <strong>Seed inventory and relations</strong>
-            <code>python -m humanoid_atlas ingest seeds --file data/seeds/inventory.seed.yml</code>
+            <strong>Seed initial atlas data</strong>
+            <code>pnpm db:seed</code>
           </div>
         </div>
       </section>

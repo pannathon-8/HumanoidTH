@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     thHeaderRecords: "Records",
     thHeaderSummary: "Ecosystem Summary",
     itemsPrefix: "Items:",
-    emptyState: "No ecosystem clusters analyzed yet. Click the button above to run AI analysis."
+    emptyState: "No analyzed clusters are available. Analysis requires a configured Gemini service; if the service is unavailable, no substitute records are shown."
   },
   th: {
     clustersStat: "คลัสเตอร์ระบบนิเวศ",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     thHeaderRecords: "จำนวนรายการ",
     thHeaderSummary: "สรุปภาพรวมระบบนิเวศ",
     itemsPrefix: "รายการย่อย:",
-    emptyState: "ยังไม่มีข้อมูลคลัสเตอร์ที่ถูกวิเคราะห์ เริ่มทำงานวิเคราะห์ AI ได้โดยคลิกปุ่มด้านบน"
+    emptyState: "ยังไม่มีข้อมูลคลัสเตอร์ที่วิเคราะห์ได้ การวิเคราะห์ต้องตั้งค่าบริการ Gemini หากบริการไม่พร้อม ระบบจะไม่แสดงรายการทดแทน"
   }
 };
 

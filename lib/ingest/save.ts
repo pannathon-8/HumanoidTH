@@ -1,6 +1,6 @@
 import type { NormalizedSource } from "@/lib/ingest/types";
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "../../generated/prisma";
+import { Prisma } from "@prisma/client";
 import { classifyRelevance, extractPerspective, classifyWithGemini } from "@/lib/classifiers";
 import { canonicalizeUrl } from "@/lib/url";
 import { enrichRawMetaWithNetworkGeo } from "@/lib/geo";

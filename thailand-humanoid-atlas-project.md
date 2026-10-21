@@ -223,7 +223,7 @@ Cache any expensive summary, graph metric, or dashboard output and invalidate wh
 
 - Seed JSON import is wired into Prisma seed.
 - The seed file auto-syncs in local dev.
-- Prisma client output uses `generated/prisma`.
+- Prisma client output uses the default `node_modules/.prisma/client` location.
 - The web app reads from Prisma Postgres instead of local SQLite.
 - A live read verification script exists.
 - The app has source ingestion, robot registry, contribution, inventory, perspective, graph, analytics, database, and admin pages.
