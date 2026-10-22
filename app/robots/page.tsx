@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { getTranslation } from "@/lib/translations";
 import CareLoopSearch from "./CareLoopSearch";
+import Link from "next/link";
 import type { SearchSource } from "@/lib/problem-search";
 
 export const dynamic = "force-dynamic";
@@ -191,6 +192,7 @@ export default async function RobotsPage() {
     <>
       <h1>{t.robotsTitle}</h1>
       <p className="muted" style={{ marginBottom: "18px" }}>{t.robotsDesc}</p>
+      <p className="lab-entry"><strong>CareLoop · ส่งคำขอและรอคนตอบรับ</strong><br />พิมพ์หรือเลือกข้อความ ส่งให้ผู้รับอีกหน้าหนึ่ง แล้วติดตามสถานะจริง <Link href="/robots/requests">เปิดหน้าส่งคำขอ →</Link><br /><Link href="/robots/lab">ศึกษารูปแบบปฏิสัมพันธ์บนต้นแบบ</Link></p>
       {dbOffline && (
         <div className="notice" style={{ marginBottom: 16 }}>
           Live database records are unavailable. No substitute robot registry records are being shown.

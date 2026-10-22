@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useRef, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { searchRobots, type SearchRobot, type SearchSource } from "@/lib/problem-search";
+import { labRobotHref, storeLabGoal } from "@/lib/careloop-lab-handoff";
 
 type Props = {
   robots: SearchRobot[];
@@ -90,6 +92,9 @@ export default function CareLoopSearch({ robots, sources, available, evidenceUna
             </li>)}</ul> : <p className="notice">ยังไม่พบแหล่งหลักฐานที่เชื่อมกับรุ่นนี้อย่างชัดเจนในข้อมูลที่โหลด ควรตรวจเพิ่มเติมก่อนนำไปใช้</p>}
             <p className="careloop-unknown"><strong>ยังต้องตรวจเพิ่มเติม:</strong> ราคา การจัดซื้อ การเข้าถึงที่เหมาะกับผู้ใช้ ความปลอดภัย และผลลัพธ์ต่อสุขภาวะ ยังไม่มีข้อมูลที่ยืนยันในผลค้นหานี้</p>
             <a href={`#robot-${robot.id}`}>ดูรายการรุ่นในฐานข้อมูลด้านล่าง</a>
+            <p><Link href={labRobotHref(robot.id)} onClick={() => {
+              try { storeLabGoal(window.sessionStorage, submitted); } catch { /* Browser storage may be unavailable. */ }
+            }}>ทดลองวิธีใช้งานจากโจทย์ และเก็บรุ่นนี้ไว้ศึกษาต่อ →</Link></p>
           </article>)}
         </div>
       </div>}

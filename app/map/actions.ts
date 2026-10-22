@@ -1,8 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
-import { analyzeAndCacheClusters, loadContributionClusters } from "@/lib/contribution-map";
+import { adminSessionCookie, authorizeAdminAction } from "@/lib/admin-auth";
+import { analyzeAndCacheClusters, loadPublicContributionClusters, publicContributionMetadata, publicInventoryMetadata } from "@/lib/contribution-map";
+
+const mapClusterCacheKey = "map_contribution_clusters_public_v2";
 
 export type ContributionMapPoint = {
   id: string;
@@ -17,7 +21,7 @@ export type ContributionMapPoint = {
   detailsList: string[];
 };
 
-export async function analyzeClustersWithGemini(): Promise<ContributionMapPoint[]> {
+async function analyzeClustersWithGemini(): Promise<ContributionMapPoint[]> {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey || apiKey === "mock_key" || apiKey.trim() === "") {
     throw new Error("GEMINI_API_KEY environment variable is not set or is invalid.");
@@ -31,7 +35,6 @@ export async function analyzeClustersWithGemini(): Promise<ContributionMapPoint[
         title: true,
         description: true,
         organization: true,
-        contributorName: true,
         contributionType: true
       }
     }),
@@ -49,23 +52,14 @@ export async function analyzeClustersWithGemini(): Promise<ContributionMapPoint[
         id: true,
         displayName: true,
         ownerOrg: true,
-        custodian: true,
-        locationLabel: true,
-        notes: true
+        locationLabel: true
       }
     })
   ]);
 
   // 2. Prepare the payload for Gemini
   const payload = {
-    contributions: contributions.map(c => ({
-      type: "contribution",
-      id: c.id,
-      title: c.title,
-      description: c.description,
-      org: c.organization || c.contributorName,
-      contribType: c.contributionType
-    })),
+    contributions: publicContributionMetadata(contributions),
     robots: robots.map(r => ({
       type: "robot_model",
       id: r.id,
@@ -74,14 +68,7 @@ export async function analyzeClustersWithGemini(): Promise<ContributionMapPoint[
       org: r.developerOrg,
       country: r.countryOfOrigin
     })),
-    inventory: inventory.map(i => ({
-      type: "owned_inventory",
-      id: i.id,
-      name: i.displayName,
-      org: i.ownerOrg || i.custodian,
-      location: i.locationLabel,
-      notes: i.notes
-    }))
+    inventory: publicInventoryMetadata(inventory)
   };
 
   const prompt = `
@@ -170,28 +157,31 @@ Return the response as a JSON object matching the requested schema.
 }
 
 export async function fetchContributionClusters(): Promise<ContributionMapPoint[]> {
-  return loadContributionClusters(
+  return loadPublicContributionClusters(
     async () => {
-      const cached = await prisma.statsCache.findUnique({ where: { key: "map_contribution_clusters" } });
+      const cached = await prisma.statsCache.findUnique({ where: { key: mapClusterCacheKey } });
       return cached?.valueJson;
-    },
-    analyzeClustersWithGemini,
-    async (clusters) => {
-      await prisma.statsCache.upsert({
-        where: { key: "map_contribution_clusters" },
-        update: { valueJson: clusters as any, updatedAt: new Date() },
-        create: { key: "map_contribution_clusters", valueJson: clusters as any }
-      });
     }
   );
 }
 
+async function requireMapAdmin() {
+  const cookieStore = await cookies();
+  const session = cookieStore.get(adminSessionCookie.name)?.value;
+  const email = cookieStore.get("user_email")?.value;
+  const user = email ? await prisma.user.findUnique({ where: { email }, select: { email: true, role: true } }) : null;
+  if (!user || !(await authorizeAdminAction(session, user.email, user.role))) {
+    throw new Error("Administrator authentication required.");
+  }
+}
+
 export async function reanalyzeClustersWithGemini() {
+  await requireMapAdmin();
   await analyzeAndCacheClusters(analyzeClustersWithGemini, async (clusters) => {
       await prisma.statsCache.upsert({
-        where: { key: "map_contribution_clusters" },
+        where: { key: mapClusterCacheKey },
         update: { valueJson: clusters as any, updatedAt: new Date() },
-        create: { key: "map_contribution_clusters", valueJson: clusters as any }
+        create: { key: mapClusterCacheKey, valueJson: clusters as any }
       });
     });
   revalidatePath("/map");

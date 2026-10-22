@@ -19,6 +19,7 @@ coverage/
 playwright-report/
 test-results/
 dist-test/
+dist/
 scratch/
 *.log
 npm-debug.log*

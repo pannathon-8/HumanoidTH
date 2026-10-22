@@ -1,0 +1,191 @@
+{
+  "provenance": "Repository seed subset; not independent validation or local live DB",
+  "robots": [
+    {
+      "id": "seed-1",
+      "canonicalName": "Dinsaw Robot",
+      "description": "Thai-developed service and social robot product family for healthcare, elderly care, and service contexts.",
+      "robotType": "social_service_robot",
+      "primaryUseCase": "Thai-developed service and social robot product family for healthcare, elderly care, and service contexts.",
+      "officialUrl": "https://www.ctasia.com/about-us/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-2",
+      "canonicalName": "Dinsaw Mini Home AI Assistance",
+      "description": "Elderly-care home assistance robot model that can move in the house, support companionship, and connect to hospitals for remote care.",
+      "robotType": "elderly_care_robot",
+      "primaryUseCase": "Elderly-care home assistance robot model that can move in the house, support companionship, and connect to hospitals for remote care.",
+      "officialUrl": "https://www.chula.ac.th/en/highlight/198924/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-3",
+      "canonicalName": "Pinto Robot",
+      "description": "Small quarantine delivery robot used to deliver food, medicine, or medical supplies and reduce infection exposure for healthcare workers.",
+      "robotType": "medical_delivery_robot",
+      "primaryUseCase": "Small quarantine delivery robot used to deliver food, medicine, or medical supplies and reduce infection exposure for healthcare workers.",
+      "officialUrl": "https://www.chula.ac.th/en/news/29278/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-4",
+      "canonicalName": "Mirror Telepresence System",
+      "description": "Long-distance communication system used with Pinto in the CU-RoboCOVID deployment to reduce infection exposure.",
+      "robotType": "telepresence_robot_system",
+      "primaryUseCase": "Long-distance communication system used with Pinto in the CU-RoboCOVID deployment to reduce infection exposure.",
+      "officialUrl": "https://csii.chula.ac.th/robots-and-the-covid-strip-test-innovations-by-chulalongkorn-university-to-combat-the-covid-pandemic/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-5",
+      "canonicalName": "Ninja Robot",
+      "description": "Hospital support robot used during COVID-19 to connect monitors and send patient data such as blood pressure, pulse, and temperature to doctors.",
+      "robotType": "medical_telepresence_robot",
+      "primaryUseCase": "Hospital support robot used during COVID-19 to connect monitors and send patient data such as blood pressure, pulse, and temperature to doctors.",
+      "officialUrl": "https://www.nationthailand.com/tech/30385613",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-6",
+      "canonicalName": "Kaitomm Robot",
+      "description": "Thai companion and personal-assistant robot with Thai-language interaction, smart-home functions, video calls, and health-device connectivity.",
+      "robotType": "companion_personal_assistant_robot",
+      "primaryUseCase": "Thai companion and personal-assistant robot with Thai-language interaction, smart-home functions, video calls, and health-device connectivity.",
+      "officialUrl": "https://www.obodroid.com/about-us/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-7",
+      "canonicalName": "SR1 Security Robot",
+      "description": "Residential security robot from Obodroid, described in the company timeline as a security robot with advanced navigation.",
+      "robotType": "security_robot",
+      "primaryUseCase": "Residential security robot from Obodroid, described in the company timeline as a security robot with advanced navigation.",
+      "officialUrl": "https://www.obodroid.com/about-us/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-8",
+      "canonicalName": "Radioactive Iodine Therapy Medical Assistant Robot",
+      "description": "Medical assistant robot developed for King Chulalongkorn Memorial Hospital to support thyroid cancer treatment with radioactive iodine therapy.",
+      "robotType": "medical_assistant_robot",
+      "primaryUseCase": "Medical assistant robot developed for King Chulalongkorn Memorial Hospital to support thyroid cancer treatment with radioactive iodine therapy.",
+      "officialUrl": "https://www.true.th/blog/en/first-time-in-thailand-introducing-a-medical-assistant-robot-that-supports-nuclear-medicine-king-chulalongkorn-memorial-hospital-in-collaboration-with-true-digital-group-brought-a-state-of-the-art-t/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-9",
+      "canonicalName": "CORGI Healthcare and Physical Therapy Assistant Robot",
+      "description": "Healthcare and physical therapy assistant robot designed to assist medical teams with patient care and physical therapy support.",
+      "robotType": "healthcare_physical_therapy_robot",
+      "primaryUseCase": "Healthcare and physical therapy assistant robot designed to assist medical teams with patient care and physical therapy support.",
+      "officialUrl": "https://www.truedigital.com/en/tdg-story/%E0%B8%97%E0%B8%A3%E0%B8%B9-%E0%B8%94%E0%B8%B4%E0%B8%88%E0%B8%B4%E0%B8%97%E0%B8%B1%E0%B8%A5-%E0%B8%9C%E0%B8%99%E0%B8%B6%E0%B8%81%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87-%E0%B8%A3%E0%B8%9E/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-10",
+      "canonicalName": "Mr SAM outpatient service robot",
+      "description": "Hospital service robot deployed for outpatient administrative processes, including patient registration and appointment support.",
+      "robotType": "hospital_administrative_service_robot",
+      "primaryUseCase": "Hospital service robot deployed for outpatient administrative processes, including patient registration and appointment support.",
+      "officialUrl": "https://en.vietnamplus.vn/thailand-introduces-robot-assistants-at-hospital-post276507.vnp",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-11",
+      "canonicalName": "Robo-Buddy",
+      "description": "Small-scale educational robot using RFID command cards to teach elementary students coding concepts through physical navigation activities.",
+      "robotType": "education_robot",
+      "primaryUseCase": "Small-scale educational robot using RFID command cards to teach elementary students coding concepts through physical navigation activities.",
+      "officialUrl": "https://sustainability.chula.ac.th/report/3802/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-12",
+      "canonicalName": "Khun Sean Smart Robot",
+      "description": "Smart robot project connected to computational thinking and primary school curriculum robotics integration.",
+      "robotType": "education_robot",
+      "primaryUseCase": "Smart robot project connected to computational thinking and primary school curriculum robotics integration.",
+      "officialUrl": "https://sustainability.chula.ac.th/report/3801/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-13",
+      "canonicalName": "Chula Rehabilitation Robots for Stroke Patients",
+      "description": "Set of five rehabilitation robot types for shoulder, elbow, wrist, hip, knee, and ankle training.",
+      "robotType": "rehabilitation_robot",
+      "primaryUseCase": "Set of five rehabilitation robot types for shoulder, elbow, wrist, hip, knee, and ankle training.",
+      "officialUrl": "https://sustainability.chula.ac.th/report/2683/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-14",
+      "canonicalName": "Exoskeleton Wheelchair Robot",
+      "description": "Wearable robotic wheelchair/exoskeleton system that can assist people with disabilities in sitting, standing, and moving.",
+      "robotType": "assistive_wearable_robot",
+      "primaryUseCase": "Wearable robotic wheelchair/exoskeleton system that can assist people with disabilities in sitting, standing, and moving.",
+      "officialUrl": "https://www.chula.ac.th/en/highlight/218151/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-15",
+      "canonicalName": "AI Police Cyborg 1.0",
+      "description": "AI-powered public-safety robotic platform deployed by Thai police in Nakhon Pathom, with 360-degree cameras and command-center integration.",
+      "robotType": "public_safety_robot",
+      "primaryUseCase": "AI-powered public-safety robotic platform deployed by Thai police in Nakhon Pathom, with 360-degree cameras and command-center integration.",
+      "officialUrl": "https://aws.amazon.com/th/blogs/thailand/aws-thai-ai-police-cyborg/",
+      "sourceMeta": null
+    },
+    {
+      "id": "seed-16",
+      "canonicalName": "Bumi humanoid robot",
+      "description": "Consumer-grade humanoid robot by Noetix Robotics showcased at an event in Bangkok, Thailand.",
+      "robotType": "humanoid_robot",
+      "primaryUseCase": "Consumer-grade humanoid robot by Noetix Robotics showcased at an event in Bangkok, Thailand.",
+      "officialUrl": "https://noetixrobotics.com/en/news/events/962",
+      "sourceMeta": null
+    }
+  ],
+  "sources": [
+    {
+      "title": "Obodroid About Us",
+      "url": "https://www.obodroid.com/about-us/",
+      "excerpt": "Obodroid supplies hospitals with over 100 Pinto delivery robots.",
+      "platform": "official_company_website",
+      "rawMeta": {
+        "canonicalName": "Obodroid official timeline"
+      },
+      "publishedAt": null
+    },
+    {
+      "title": "First Time in Thailand, Introducing a Medical Assistant Robot That Supports Nuclear Medicine",
+      "url": "https://www.true.th/blog/en/first-time-in-thailand-introducing-a-medical-assistant-robot-that-supports-nuclear-medicine-king-chulalongkorn-memorial-hospital-in-collaboration-with-true-digital-group-brought-a-state-of-the-art-t/",
+      "excerpt": "Medical assistant robot that supports nuclear medicine ... thyroid cancer treatment with radioactive iodine therapy.",
+      "platform": "company_blog",
+      "rawMeta": {
+        "canonicalName": "True Digital nuclear medicine assistant robot"
+      },
+      "publishedAt": "2023-10-27"
+    },
+    {
+      "title": "True Digital Partners with King Chulalongkorn Memorial Hospital to Launch Digital Hospital Powered by Physical AI",
+      "url": "https://www.truedigital.com/en/tdg-story/%E0%B8%97%E0%B8%A3%E0%B8%B9-%E0%B8%94%E0%B8%B4%E0%B8%88%E0%B8%B4%E0%B8%97%E0%B8%B1%E0%B8%A5-%E0%B8%9C%E0%B8%99%E0%B8%B6%E0%B8%81%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87-%E0%B8%A3%E0%B8%9E/",
+      "excerpt": "Healthcare and Physical Therapy Assistant Robot named CORGI.",
+      "platform": "company_blog",
+      "rawMeta": {
+        "canonicalName": "True Digital CORGI physical therapy assistant robot launch"
+      },
+      "publishedAt": "2026-02-09"
+    },
+    {
+      "title": "Noetix Robotics showcased Bumi at Asia-Pacific Sustainable Development Forum in Bangkok",
+      "url": "https://noetixrobotics.com/en/news/events/962",
+      "excerpt": "Showcased the consumer-grade humanoid robot Bumi ... in Bangkok, Thailand.",
+      "platform": "company_event_page",
+      "rawMeta": {
+        "canonicalName": "Bumi humanoid robot Bangkok APSDF showcase"
+      },
+      "publishedAt": null
+    }
+  ]
+}
