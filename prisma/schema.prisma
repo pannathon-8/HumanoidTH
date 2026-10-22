@@ -249,3 +249,43 @@ model OwnedInventory {
 
   @@index([robotModelId])
 }
+
+model CareRequestRoom {
+  id                String         @id @default(cuid())
+  senderTokenHash   String         @unique
+  receiverTokenHash String         @unique
+  expiresAt         DateTime
+  createdAt         DateTime       @default(now())
+  requests          CareRequest[]
+
+  @@index([expiresAt])
+}
+
+model CareRequest {
+  id              String             @id @default(cuid())
+  roomId          String
+  room            CareRequestRoom    @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  clientRequestId String
+  message         String
+  category        String
+  place           String?
+  channel         String
+  status          String             @default("PENDING")
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  events          CareRequestEvent[]
+
+  @@unique([roomId, clientRequestId])
+  @@index([roomId, status, createdAt])
+}
+
+model CareRequestEvent {
+  id        String      @id @default(cuid())
+  requestId String
+  request   CareRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  action    String
+  actor     String
+  createdAt DateTime    @default(now())
+
+  @@index([requestId, createdAt])
+}

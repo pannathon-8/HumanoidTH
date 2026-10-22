@@ -1,5 +1,9 @@
 # 🤖 Thailand Humanoid Atlas 🗺️
 
+## CareLoop AI extension
+
+[Try the public Search and interaction Lab demo](https://careloop-ai-hri-demo.neontulip1025.chatgpt.site/robots) · [Feature guide and limitations](docs/careloop/README.md) · [Run the PostgreSQL request exchange](docs/careloop/REAL_REQUESTS.md). The public demo reuses this fork's shared components with 16 seed models; it does not connect to a physical robot or an external scenario-generation AI. The main application also includes the sender/receiver request exchange for local deployment.
+
 <p align="center">
 <img width="1672" height="941" alt="ChatGPT Image Jul 3, 2026, 06_45_37 AM" src="https://github.com/user-attachments/assets/c9281d22-6d95-4956-90f7-3039bad08947" />
 </p>
@@ -285,15 +289,16 @@ Set these variables in your Vercel project settings:
 ```env
 DATABASE_URL="prisma+postgres://accelerate.prisma-data.net/?api_key=..."
 NEXT_PUBLIC_APP_URL="https://your-project.vercel.app"
-ADMIN_BASIC_USER="creativelab.co.th@gmail.com"
+ADMIN_BASIC_USER="your-admin-email"
 ADMIN_BASIC_PASSWORD="use-a-strong-password"
+ADMIN_SESSION_SECRET="a-long-random-server-only-secret"
 YOUTUBE_API_KEY="your-api-key"
 GITHUB_TOKEN="your-token"
 GEMINI_API_KEY="your-gemini-api-key"
 ```
 
 > [!IMPORTANT]
-> - 🔒 Production endpoints `/admin/*`, `/data-pulls`, and `/api/ingest/*` are protected with Basic Auth using `ADMIN_BASIC_USER` and `ADMIN_BASIC_PASSWORD`. Keep credentials safe!
+> - 🔒 Admin login verifies configured `ADMIN_BASIC_USER` / `ADMIN_BASIC_PASSWORD` and issues a signed, expiring session using `ADMIN_SESSION_SECRET`. Protected routes and privileged server actions reject forged or missing sessions. Missing configuration disables admin login. Ordinary profile login remains a prototype identity flow; do not treat it as verified user authentication.
 > - ⚙️ The Vercel build command is configured to run `pnpm vercel-build` which automatically handles schema generation. Do **not** run `db:push` inside the Vercel build phase.
 
 ---
